@@ -1,0 +1,74 @@
+#+title: Sage Quick Reference: Graph Theory
+
+#+setupfile: ~/Dropbox/org/cheatsheetheader/cheatsheetheader.org
+
+#+latex_header: \usepackage[default,osfigures]{opensans}
+#+latex_header: \usepackage[scaled=0.8]{luximono}
+#+latex_header: \usepackage{hyperref}
+
+#+latex: \begin{multicols}{3}
+#+latex: \scriptsize
+#+latex: \thispagestyle{empty}
+
+* Graph Definitions
+
+[[file:/home/rafael/Dropbox/org/cheatsheet-SageGraph/graph.png]]
+
+- Dictionary format :: ~g=Graph({0:[1,2],1:[2,3],2:[3]})~
+- Adjacency matrix ::
+     ~g=Graph(Matrix([(0,1,1,0),(1,0,1,1),(1,1,0,1),(0,1,1,0)]))~
+- List of edges :: ~g=Graph();~ ~g.add_vertices(range(4));~
+                   ~g.add_edges([(0,1),(0,2),(1,2),(1,3),(2,3)]);~
+- List of vertices and a function describing adjacencies ::
+     ~g=Graph([GF(13), lambda i,j: i!=j and (i-j).is_square()])~
+
+* Graph Families (with parameters)
+
+- ~g=graphs.CompleteGraph(5)~
+- ~g=graphs.CompleteBipartiteGraph(3,5)~
+- ~g=graphs.CycleGraph(5)~
+- ~g=graphs.PathGraph(5)~
+- ~g=graphs.CirculantGraph(11,[1,2,4])~
+- ~g=graphs.LCFGraph(14,[5,-5],7)~
+- ~g=graphs.LadderGraph(7)~
+- ~g=graphs.CircularLadderGraph(7)~
+- ~g=graphs.StarGraph(7)~ Has 8 vertices.
+- ~g=graphs.WheelGraph(7)~ Has 7 vertices.
+- ~g=graphs.Grid2dGraph(5,6)~
+- ~g=graphs.GridGraph([2,3,4])~ 3d-grid.
+- ~g=graphs.CubeGraph(4)~ Hypercube.
+- ~g=graphs.BalancedTree(4,2)~
+[[file:/home/rafael/Dropbox/org/cheatsheet-SageGraph/balancedtree.png]]
+
+- ~g=graphs.BarbellGraph(5,3)~
+[[file:/home/rafael/Dropbox/org/cheatsheet-SageGraph/barbell.png]]
+
+- ~g=graphs.LollipopGraph(5,3)~ A barbell graph without one of
+the complete graphs.
+
+* Named graphs
+
+- Platonic :: ~TetrahedralGraph~, ~HexahedralGraph~, ~OctahedralGraph~,
+              ~IcosahedralGraph~, ~DodecahedralGraph~.
+
+- Other :: ~BullGraph~, ~ChvatalGraph~, ~ClawGraph~, ~DesarguesGraph~,
+           ~DiamondGraph~, ~EmptyGraph~, ~FlowerSnark~, ~FruchtGraph~,
+           ~HeawoodGraph~, ~HoffmanSingletonGraph~, ~HouseGraph~,
+           ~HouseXGraph~, ~KrackhardtKiteGraph~, ~MoebiusKantorGraph~,
+           ~PappusGraph~, ~PetersenGraph~, ~ThomsenGraph~.
+
+* Random graphs
+
+- ~g=graphs.RandomGNP(8,14)~ Graph picked randomly from all graphs with
+  8 vertices and 14 edges.
+
+- ~g=graphs.RandomGNP(8,.5)~ Random graph with 8 vertices, edges
+  inserted independently with probability .5.
+
+- ~g=graphs.RandomRegular(3,20)~ Random 3-regular graph with 20
+  vertices.
+
+Other: ~RandomBarabasiAlbert~, ~RandomHolmeKim~, ~RandomLobster~,
+~RandomNewmanWattsStrogatz~, ~RandomShell~, ~RandomTreePowerlaw~.
+
+#+latex: \end{multicols}
