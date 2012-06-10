@@ -71,4 +71,15 @@ the complete graphs.
 Other: ~RandomBarabasiAlbert~, ~RandomHolmeKim~, ~RandomLobster~,
 ~RandomNewmanWattsStrogatz~, ~RandomShell~, ~RandomTreePowerlaw~.
 
+* Generators
+
+- ~L = list(graphs(5,size=4))~, ~graphs_list.show_graphs(list(L))~ Graphs
+  with 5 vertices and 4 edges. 
+  
+- ~L = list( graphs(5, lambda G: G.is_bipartite()) )~ Bipartite graphs
+  with 5 vertices.
+
+
+
 #+latex: \end{multicols}
+
