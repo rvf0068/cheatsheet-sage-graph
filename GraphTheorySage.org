@@ -5,6 +5,7 @@
 #+latex_header: \usepackage[default,osfigures]{opensans}
 #+latex_header: \usepackage[scaled=0.8]{luximono}
 #+latex_header: \usepackage{hyperref}
+#+latex_header: \usepackage{amssymb}
 
 #+latex: \begin{multicols}{3}
 #+latex: \scriptsize
@@ -12,7 +13,9 @@
 
 * Graph Definitions
 
-[[file:/home/rafael/Dropbox/org/cheatsheet-SageGraph/graph.png]]
+#+begin_center
+[[./graph.png]]
+#+end_center
 
 - Dictionary format :: ~g=Graph({0:[1,2],1:[2,3],2:[3]})~
 - Adjacency matrix ::
@@ -38,11 +41,13 @@
 - ~g=graphs.GridGraph([2,3,4])~ 3d-grid.
 - ~g=graphs.CubeGraph(4)~ Hypercube.
 - ~g=graphs.BalancedTree(4,2)~
-[[file:/home/rafael/Dropbox/org/cheatsheet-SageGraph/balancedtree.png]]
-
+#+begin_center
+[[./balancedtree.png]]
+#+end_center
 - ~g=graphs.BarbellGraph(5,3)~
-[[file:/home/rafael/Dropbox/org/cheatsheet-SageGraph/barbell.png]]
-
+#+begin_center
+[[./barbell.png]]
+#+end_center
 - ~g=graphs.LollipopGraph(5,3)~ A barbell graph without one of
 the complete graphs.
 
@@ -79,7 +84,209 @@ Other: ~RandomBarabasiAlbert~, ~RandomHolmeKim~, ~RandomLobster~,
 - ~L = list( graphs(5, lambda G: G.is_bipartite()) )~ Bipartite graphs
   with 5 vertices.
 
+* Modifying graphs
 
+- ~G.add_vertex(10)~
+
+- ~G.add_vertex()~ Adds a vertex represented by the least integer not
+  already representing a vertex.
+
+- ~G.add_vertices([11,12,13])~
+
+- ~G.add_edge(8,9)~ Vertices 8,9 need not be present.
+
+- ~G.add_edges([(11,12),(11,13)])~
+
+- ~G.add_cycle([8,9,10,11])~
+
+- ~G.add_path([8,10,5,2])~
+
+- ~G.delete_vertex(9)~ Vertex 9 must be present.
+
+- ~G.delete_edge(2,3)~ Neither vertices 2,3 nor edge must be present.
+
+  Similar: ~delete_vertices~, ~delete_edges~.
+
+- ~G.clear()~ Empties the graph.
+
+* Parameters
+
+- ~G.connected_components_number()~
+
+- ~G.chromatic_number()~
+
+- ~G.clique_number()~
+
+- ~G.degree(8)~ The degree of vertex 8.
+
+- ~G.degree([2,5,8])~. 
+
+- ~G.degree()~ All vertex degrees.
+
+- ~G.density()~ Number of edges divided by number of possible edges.
+
+- ~G.diameter()~
+
+- ~G.distance(3,4)~
+
+- ~G.eccentricity(4)~
+
+- ~G.girth()~
+
+- ~G.num_edges()~ Same as ~G.size()~.
+
+- ~G.num_verts()~ Same as ~len(G)~, same as ~G.order()~.
+
+- ~G.radius()~
+
+* Boolean tests
+
+- ~G.has_vertex(1)~
+
+- ~G.has_edge(1,2)~
+
+- ~G.is_clique([5,8,12])~ If the vertices 5,8,12 induce a complete
+  subgraph.
+
+- ~G.is_connected()~
+
+- ~G.is_eulerian()~
+
+- ~G.is_forest()~
+
+- ~G.is_independent_set([0,5,11])~
+
+- ~G.is_isomorphic(H)~
+
+- ~G.is_planar(kuratowski=True)~ If not planar, returns a tuple with a
+  Kuratowski subgraph as the second entry.
+
+- ~G.is_planar(set_pos=True)~ If planar, sets the positions of the
+  vertices to reflect a combinatorial embedding when displaying the
+  graph.
+
+- ~H.is_subgraph(G)~ Whether $H$ is subgraph of $G$.
+
+- ~G.is_tree()~
+
+- ~G.is_vertex_transitive()~
+
+* Products
+
+- ~P = G.cartesian_product(H)~ $\Box$ product.
+
+- ~P = G.categorical_product(H)~ $\times$ product. Same as
+  ~G.tensor_product(H)~.
+
+- ~P = G.disjoint_union(H)~. Same as ~P = G+H~.
+
+- ~P = G.disjunctive_product(H)~ $(g_{1},h_{1})\sim (g_{2},h_{2})$
+  whenever $g_{1}\sim g_{2}$ or $h_{1}\sim h_{2}$.
+
+- ~P = G.lexicographic_product(H)~ $(g_{1},h_{1})\sim (g_{2},h_{2})$
+  whenever $g_{1}\sim g_{2}$, or $g_{1}=g_{2}$ and $h_{1}\sim h_{2}$.
+
+- ~P = G.strong_product(H)~ $\boxtimes$ product.
+
+- ~P = G.union(H)~ Vertices in common are identified.
+
+* Operators
+
+- ~G.complement()~
+
+- ~G.line_graph()~
+
+- ~G.cliques_get_clique_bipartite()~ The vertex-clique bipartite graph.
+
+- ~G.cliques_get_max_clique_graph()~ The clique graph.
+
+* Subgraphs
+
+- ~G.connected_components_subgraphs()~
+
+- ~G.random_subgraph(.75)~ Random subgraph containing each vertex with
+  probability .75.
+
+- ~H = G.subgraph([1,4,6,9])~ Subgraph induced by 1,4,6,9.
+
+* Lists
+
+- ~G.all_paths(1,4)~ Paths from 1 to 4
+
+- ~G.bipartite_sets()~ Returns a bipartition.
+
+- ~G.blocks_and_cut_vertices()~
+
+- ~G.center()~
+
+- ~G.cliques()~ List of maximal complete subgraphs.
+
+- ~G.cliques_containing_vertex([1,2])~ Returns a list of lists.
+
+- ~G.cliques_number_of([1,3])~ List of numbers of maximal completes
+  containing each vertex.
+
+- ~G.cliques_vertex_clique_number([1,3])~ List of sizes of the largest
+  maximal completes containing each vertex.
+
+- ~G.connected_components()~
+
+- ~G.connected_component_containing_vertex(1)~
+
+- ~G.edge_boundary([4,6],[7,9],labels=False)~ List of edges from [4,6]
+  to [7,9].
+
+- ~G.edges(labels=False)~ List of all edges.
+
+- ~G.edges_incident(3,labels=False)~ List of edges incident with 3.
+
+- ~G.eulerian_circuit()~
+
+- ~G.neighbors(2)~ Neighbors of 2. Same as ~G[2]~.
+
+- ~G.periphery()~
+
+- ~G.shortest_path(2,11)~
+
+- ~G.vertices()~
+
+* External formats
+
+- ~G.graphviz_string()~
+
+- ~G.graphviz_to_file_named('/home/user/file.dot')~
+
+- ~G.graph6_string()~
+
+- ~G.sparse6_string()~
+
+* Algebraic objects
+
+- ~G.adjacency_matrix()~ or ~G.am()~ 
+
+- ~G.automorphism_group()~
+
+- ~G.characteristic_polynomial()~
+
+- ~G.chromatic_polynomial()~
+
+- ~G.laplacian_matrix()~
+
+- ~G.spectrum()~
+
+* Displaying graphs
+
+- ~G.show()~ or ~G.plot()~
+- ~G=graphs.PetersenGraph();~ ~C=graph_coloring.first_coloring(G,3);~
+  ~G.plot(vertex_colors=C,vertex_labels=False~ 
+#+begin_center
+[[./petersen.png]]
+#+end_center
+- ~G.show3d()~
+#+begin_center
+[[./dodecahedron.png]]
+#+end_center
 
 #+latex: \end{multicols}
+
 
