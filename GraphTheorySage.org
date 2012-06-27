@@ -11,6 +11,10 @@
 #+latex: \scriptsize
 #+latex: \thispagestyle{empty}
 
+* Links
+
+- The online manual: [[http://www.sagemath.org/doc/reference/graphs.html][Graph Theory]]
+
 * Graph Definitions
 
 #+begin_center
@@ -49,8 +53,8 @@
 #+begin_center
 [[./barbell.png]]
 #+end_center
-- ~g=graphs.LollipopGraph(5,3)~ A barbell graph without one of
-the complete graphs.
+- ~g=graphs.LollipopGraph(5,3)~ A barbell graph without one of the
+  complete graphs.
 
 * Named graphs
 
@@ -65,7 +69,7 @@ the complete graphs.
 
 * Random graphs
 
-- ~g=graphs.RandomGNP(8,14)~ Graph picked randomly from all graphs with
+- ~g=graphs.RandomGNM(8,14)~ Graph picked randomly from all graphs with
   8 vertices and 14 edges.
 
 - ~g=graphs.RandomGNP(8,.5)~ Random graph with 8 vertices, edges
@@ -220,7 +224,7 @@ Other: ~RandomBarabasiAlbert~, ~RandomHolmeKim~, ~RandomLobster~,
 
 - ~G.center()~
 
-- ~G.cliques()~ List of maximal complete subgraphs.
+- ~G.cliques_maximal()~ List of maximal complete subgraphs.
 
 - ~G.cliques_containing_vertex([1,2])~ Returns a list of lists.
 
