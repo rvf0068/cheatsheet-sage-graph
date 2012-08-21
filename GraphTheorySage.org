@@ -279,6 +279,10 @@ Other: ~RandomBarabasiAlbert~, ~RandomHolmeKim~, ~RandomLobster~,
 
 - ~G.spectrum()~
 
+* Other
+
+- ~G.clique_complex()~
+
 * Displaying graphs
 
 - ~G.show()~ or ~G.plot()~
