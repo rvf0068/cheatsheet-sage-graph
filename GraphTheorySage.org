@@ -18,6 +18,7 @@
 * Graph Definitions
 
 #+begin_center
+#+attr_latex: :width 6cm
 [[./graph.png]]
 #+end_center
 
@@ -47,10 +48,12 @@
 - ~g=graphs.CubeGraph(4)~ Hypercube.
 - ~g=graphs.BalancedTree(4,2)~
 #+begin_center
+#+attr_latex: :width 6cm
 [[./balancedtree.png]]
 #+end_center
 - ~g=graphs.BarbellGraph(5,3)~
 #+begin_center
+#+attr_latex: :width 6cm
 [[./barbell.png]]
 #+end_center
 - ~g=graphs.LollipopGraph(5,3)~ A barbell graph without one of the
@@ -289,10 +292,12 @@ Other: ~RandomBarabasiAlbert~, ~RandomHolmeKim~, ~RandomLobster~,
 - ~G=graphs.PetersenGraph();~ ~C=graph_coloring.first_coloring(G,3);~
   ~G.plot(vertex_colors=C,vertex_labels=False~ 
 #+begin_center
+#+attr_latex: :width 6cm
 [[./petersen.png]]
 #+end_center
 - ~G.show3d()~
 #+begin_center
+#+attr_latex: :width 6cm
 [[./dodecahedron.png]]
 #+end_center
 
