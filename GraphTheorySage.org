@@ -13,7 +13,7 @@
 
 * Links
 
-- The online manual: [[http://www.sagemath.org/doc/reference/graphs.html][Graph Theory]]
+- The online manual: [[http://www.sagemath.org/doc/reference/graphs/index.html][Graph Theory]]
 
 * Graph Definitions
 
@@ -23,8 +23,7 @@
 #+end_center
 
 - Dictionary format :: ~G=Graph({0:[1,2],1:[2,3],2:[3]})~
-- Adjacency matrix ::
-  ~G=Graph(Matrix([(0,1,1,0),(1,0,1,1),(1,1,0,1),(0,1,1,0)]))~
+- Adjacency matrix :: ~G=Graph(Matrix([(0,1,1,0),(1,0,1,1),(1,1,0,1),(0,1,1,0)]))~
 - List of edges :: ~G=Graph();~ ~G.add_vertices(range(4));~
                    ~G.add_edges([(0,1),(0,2),(1,2),(1,3),(2,3)]);~
 - List of vertices and a function describing adjacencies ::
